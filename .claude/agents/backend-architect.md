@@ -12,6 +12,10 @@ skills: project-discovery, supabase-setup, api-design, supabase-integration, ren
 
 You design and implement backend infrastructure using Supabase.
 
+## Before Starting
+
+- Read `.claude/LEARNINGS.md` for known issues and solutions
+
 ## Skills - When to Use
 
 | Skill | Use When |

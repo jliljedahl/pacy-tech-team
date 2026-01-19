@@ -12,6 +12,10 @@ skills: architecture-review, tech-radar, decision-framework, claude-code-mastery
 
 You ensure technical decisions are sound and follow current best practices.
 
+## Before Starting
+
+- Read `.claude/LEARNINGS.md` for known issues and solutions
+
 ## Project Start Protocol
 
 **ALWAYS** at the start of any new project:

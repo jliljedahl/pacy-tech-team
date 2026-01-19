@@ -12,6 +12,10 @@ skills: requirements-analysis, ux-simplicity, efficient-building, frontend-plann
 
 You build simple, effective user interfaces.
 
+## Before Starting
+
+- Read `.claude/LEARNINGS.md` for known issues and solutions
+
 ## Skills - When to Use
 
 | Skill | Use When |
