@@ -65,6 +65,16 @@ claude
 | `project-discovery` | backend-architect | Kartlägga data-krav |
 | `requirements-analysis` | frontend-architect | Analysera frontend-krav |
 | `architecture-review` | cto | Granska tekniska beslut |
+| `deployment-workflow` | tech-project-lead | End-to-end deployment (Supabase + Render) |
+
+### Continuous Learning Skills
+
+| Skill | Agent(s) | Capability |
+|-------|----------|------------|
+| `retrospective` | alla | Fånga lärdomar efter projekt, identifiera mönster |
+| `skill-improvement` | alla | Analysera LEARNINGS.md, föreslå permanenta förbättringar |
+| `decision-framework` | alla | Strukturerad beslutsprocess, dokumentation |
+| `efficient-building` | alla | Minimera tokens, återanvänd kod, undvik omskrivningar |
 
 ## Capabilities
 
@@ -134,17 +144,23 @@ SUPABASE_ANON_KEY=eyJ...
 │   ├── architecture-review/
 │   ├── claude-code-mastery/
 │   ├── decision-framework/
+│   ├── deployment-workflow/
 │   ├── efficient-building/
 │   ├── frontend-planning/
 │   ├── project-coordination/
 │   ├── project-discovery/
 │   ├── render-deployment/
 │   ├── requirements-analysis/
+│   ├── retrospective/
+│   ├── skill-improvement/
 │   ├── supabase-integration/
 │   ├── supabase-setup/
 │   ├── tech-radar/
 │   └── ux-simplicity/
-└── plans/
+├── plans/
+└── LEARNINGS.md          # Captures patterns from projects
+                           # Used by retrospective & skill-improvement
+                           # Enables continuous team improvement
 ```
 
 ## Account Info
@@ -157,7 +173,15 @@ SUPABASE_ANON_KEY=eyJ...
 
 ## Changelog
 
-### 2026-01-19
+### 2026-01-19 (v2)
+
+- **Continuous Learning System**
+  - Created `deployment-workflow` skill for end-to-end Supabase + Render deployment
+  - Created `retrospective` skill for capturing project learnings
+  - Created `skill-improvement` skill for analyzing patterns and proposing permanent improvements
+  - Added LEARNINGS.md system for iterative team improvement
+
+### 2026-01-19 (v1)
 
 - Created `claude-code-mastery` skill with comprehensive best practices
 - Created `supabase-integration` skill for app connectivity
