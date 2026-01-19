@@ -59,6 +59,71 @@ curl -s "https://api.render.com/v1/services/SERVICE_ID/env-vars" \
   -d '[{"key": "VAR_NAME", "value": "VAR_VALUE"}]'
 ```
 
+### Create Static Site (Frontend)
+
+```bash
+curl -s "https://api.render.com/v1/services" \
+  -X POST \
+  -H "Authorization: Bearer $RENDER_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "type": "static_site",
+    "name": "my-frontend",
+    "ownerId": "tea-d51s8f15pdvs73efe5f0",
+    "repo": "https://github.com/USER/REPO",
+    "branch": "main",
+    "rootDir": "frontend",
+    "autoDeploy": "yes",
+    "buildCommand": "npm install && npm run build",
+    "staticPublishPath": "./dist"
+  }'
+```
+
+### Create Web Service (Backend)
+
+```bash
+curl -s "https://api.render.com/v1/services" \
+  -X POST \
+  -H "Authorization: Bearer $RENDER_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "type": "web_service",
+    "name": "my-backend",
+    "ownerId": "tea-d51s8f15pdvs73efe5f0",
+    "repo": "https://github.com/USER/REPO",
+    "branch": "main",
+    "rootDir": "backend",
+    "autoDeploy": "yes",
+    "serviceDetails": {
+      "plan": "starter",
+      "region": "frankfurt",
+      "runtime": "node",
+      "envSpecificDetails": {
+        "buildCommand": "npm install && npm run build",
+        "startCommand": "npm start"
+      }
+    }
+  }'
+```
+
+**Note:** Free plan web services cannot be created via API - use dashboard or starter plan ($7/mo).
+
+### Delete Service
+
+```bash
+curl -s "https://api.render.com/v1/services/SERVICE_ID" \
+  -X DELETE \
+  -H "Authorization: Bearer $RENDER_API_KEY"
+```
+
+### Account Info
+
+| Key | Value |
+|-----|-------|
+| Owner ID | `tea-d51s8f15pdvs73efe5f0` |
+| Team | Pacy Training Program |
+| Region | frankfurt |
+
 ### Existing Services
 
 | Service | ID | Type |
