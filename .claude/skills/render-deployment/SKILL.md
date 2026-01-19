@@ -14,6 +14,60 @@ allowed-tools:
 
 # Render Deployment
 
+## API Access
+
+Render API is configured. Key is in `.env` as `RENDER_API_KEY`.
+
+### List Services
+
+```bash
+curl -s "https://api.render.com/v1/services?limit=20" \
+  -H "Authorization: Bearer $RENDER_API_KEY" \
+  -H "Accept: application/json"
+```
+
+### Get Service Details
+
+```bash
+curl -s "https://api.render.com/v1/services/SERVICE_ID" \
+  -H "Authorization: Bearer $RENDER_API_KEY"
+```
+
+### Trigger Deploy
+
+```bash
+curl -s "https://api.render.com/v1/services/SERVICE_ID/deploys" \
+  -X POST \
+  -H "Authorization: Bearer $RENDER_API_KEY" \
+  -H "Accept: application/json"
+```
+
+### Get Deploy Status
+
+```bash
+curl -s "https://api.render.com/v1/services/SERVICE_ID/deploys?limit=1" \
+  -H "Authorization: Bearer $RENDER_API_KEY"
+```
+
+### Set Environment Variable
+
+```bash
+curl -s "https://api.render.com/v1/services/SERVICE_ID/env-vars" \
+  -X PUT \
+  -H "Authorization: Bearer $RENDER_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '[{"key": "VAR_NAME", "value": "VAR_VALUE"}]'
+```
+
+### Existing Services
+
+| Service | ID | Type |
+|---------|-----|------|
+| pacy-frontend | srv-d52jndt6ubrc739vv1q0 | static_site |
+| pacy-training-system | srv-d51sf115pdvs73efj3q0 | web_service |
+
+---
+
 ## Service Types
 
 | Type | Use For | Cost |
