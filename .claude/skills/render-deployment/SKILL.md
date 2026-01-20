@@ -69,7 +69,7 @@ curl -s "https://api.render.com/v1/services" \
   -d '{
     "type": "static_site",
     "name": "my-frontend",
-    "ownerId": "tea-d51s8f15pdvs73efe5f0",
+    "ownerId": "'$RENDER_OWNER_ID'",
     "repo": "https://github.com/USER/REPO",
     "branch": "main",
     "rootDir": "frontend",
@@ -89,7 +89,7 @@ curl -s "https://api.render.com/v1/services" \
   -d '{
     "type": "web_service",
     "name": "my-backend",
-    "ownerId": "tea-d51s8f15pdvs73efe5f0",
+    "ownerId": "'$RENDER_OWNER_ID'",
     "repo": "https://github.com/USER/REPO",
     "branch": "main",
     "rootDir": "backend",
@@ -120,7 +120,7 @@ curl -s "https://api.render.com/v1/services/SERVICE_ID" \
 
 | Key | Value |
 |-----|-------|
-| Owner ID | `tea-d51s8f15pdvs73efe5f0` |
+| Owner ID | `$RENDER_OWNER_ID` (from .env) |
 | Team | Pacy Training Program |
 | Region | frankfurt |
 

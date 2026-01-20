@@ -36,10 +36,12 @@ DISCOVERY → BACKEND → FRONTEND → HANDOFF
 
 ### Phase 4: Handoff
 - Verify everything works
-- Document what was built
+- **Update project README.md** (mandatory - see template below)
+- Create internal handoff document
+- Run retrospective skill
 - Transfer knowledge
 
-**Gate:** Customer accepts delivery
+**Gate:** Customer accepts delivery AND project is self-documenting
 
 ## Delegation Templates
 
@@ -132,3 +134,51 @@ Phase: [current] | Progress: [X]%
 ## Next Steps
 [recommendations]
 ```
+
+## Project README Template
+
+Every project MUST have its README.md updated. This is non-negotiable.
+
+```markdown
+# [Project Name]
+
+[One sentence: what this does]
+
+## Quick Start
+
+\`\`\`bash
+npm install
+npm run dev
+\`\`\`
+
+## Architecture
+
+| Component | Technology | URL/Details |
+|-----------|------------|-------------|
+| Database | Supabase | [project URL] |
+| Frontend | Next.js | [deployed URL] |
+
+## Environment Variables
+
+| Variable | Description |
+|----------|-------------|
+| `NEXT_PUBLIC_SUPABASE_URL` | Supabase project URL |
+| `NEXT_PUBLIC_SUPABASE_ANON_KEY` | Supabase anonymous key |
+
+## Features
+
+- [Feature 1]
+- [Feature 2]
+
+## Development
+
+[How to run, test, and deploy]
+
+## Key Decisions
+
+| Decision | Why |
+|----------|-----|
+| [Choice made] | [Rationale] |
+```
+
+**Why this matters:** The customer must be able to maintain and extend the project without us. A good README is the difference between handoff and abandonment.

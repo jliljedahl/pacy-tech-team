@@ -15,29 +15,29 @@ allowed-tools:
 
 # Deployment Workflow
 
-Orkestrerar deployment av projekt till Supabase (databas) och Render (hosting).
+Orchestrates deployment of projects to Supabase (database) and Render (hosting).
 
 ## Prerequisites
 
 - Supabase CLI: `~/bin/supabase` (authenticated)
-- Render API: `RENDER_API_KEY` i Pacy-Tech-team `.env`
-- GitHub repo för projektet
+- Render API: `RENDER_API_KEY` in Pacy-Tech-team `.env`
+- GitHub repo for the project
 
 ## Workflow
 
 ### Phase 1: Discovery (GATHER)
 
-1. **Identifiera target repo**
-   - Fråga användaren om repo URL eller lokal path
-   - Läs `package.json` för projekttyp
+1. **Identify target repo**
+   - Ask user for repo URL or local path
+   - Read `package.json` for project type
 
-2. **Analysera struktur**
+2. **Analyze structure**
    - Monorepo? (`/frontend`, `/backend`)
    - Framework? (Next.js, Vite, Express)
-   - Databas-spec? (`docs/*database*.md`)
+   - Database spec? (`docs/*database*.md`)
 
-3. **Bestäm deployment-typ**
-   | Struktur | Frontend | Backend |
+3. **Determine deployment type**
+   | Structure | Frontend | Backend |
    |----------|----------|---------|
    | Monorepo | static_site | web_service |
    | Frontend only | static_site | - |
@@ -45,42 +45,42 @@ Orkestrerar deployment av projekt till Supabase (databas) och Render (hosting).
 
 ### Phase 2: Infrastructure Decision
 
-**ALLTID fråga användaren:**
+**ALWAYS ask the user:**
 
-> Vill du:
-> A) Skapa nytt Supabase-projekt
-> B) Använda befintligt projekt (lista tillgängliga)
+> Do you want to:
+> A) Create a new Supabase project
+> B) Use an existing project (list available ones)
 
-**Befintliga projekt:**
+**Existing projects:**
 - Pacy Demo Project DB (`cetabbnywnebilekvmag`)
 
 ### Phase 3: Supabase Setup (ACT)
 
-**Om nytt projekt:**
+**If new project:**
 ```bash
 ~/bin/supabase projects create "Project Name" \
-  --org-id olshfmcoszcgfwznrxgs \
+  --org-id $SUPABASE_ORG_ID \
   --region eu-central-1 \
   --db-password "SECURE_PASSWORD"
 ```
 
-**Kör migrations (om databas-spec finns):**
+**Run migrations (if database spec exists):**
 ```bash
 mkdir -p /tmp/PROJECT && cd /tmp/PROJECT
 ~/bin/supabase init
 ~/bin/supabase link --project-ref REF --password "PASSWORD"
-# Skapa migration från spec
+# Create migration from spec
 ~/bin/supabase db push
 ```
 
-**Hämta credentials:**
+**Get credentials:**
 ```bash
 ~/bin/supabase projects api-keys --project-ref REF
 ```
 
 ### Phase 4: Render Setup (ACT)
 
-**Skapa services via API:**
+**Create services via API:**
 
 ```bash
 # Frontend (static_site)
@@ -90,21 +90,21 @@ curl -s "https://api.render.com/v1/services" \
   -d '{
     "type": "static_site",
     "name": "PROJECT-frontend",
-    "ownerId": "tea-d51s8f15pdvs73efe5f0",
+    "ownerId": "'$RENDER_OWNER_ID'",
     "repo": "https://github.com/USER/REPO",
     "rootDir": "frontend",
     "buildCommand": "npm install && npm run build",
     "staticPublishPath": "./dist"
   }'
 
-# Backend (web_service) - kräver starter plan
+# Backend (web_service) - requires starter plan
 curl -s "https://api.render.com/v1/services" \
   -X POST -H "Authorization: Bearer $RENDER_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
     "type": "web_service",
     "name": "PROJECT-api",
-    "ownerId": "tea-d51s8f15pdvs73efe5f0",
+    "ownerId": "'$RENDER_OWNER_ID'",
     "repo": "https://github.com/USER/REPO",
     "rootDir": "backend",
     "serviceDetails": {
@@ -121,10 +121,10 @@ curl -s "https://api.render.com/v1/services" \
 
 ### Phase 5: Configuration (ACT)
 
-**Uppdatera projektets `.env`:**
+**Update project's `.env`:**
 
 ```bash
-# Skapa/uppdatera .env i målprojektet
+# Create/update .env in target project
 cat >> /path/to/project/.env << EOF
 
 # Supabase (added by deployment-workflow)
@@ -137,7 +137,7 @@ VITE_API_URL=https://project-api.onrender.com
 EOF
 ```
 
-**Sätt env vars i Render:**
+**Set env vars in Render:**
 ```bash
 curl -s "https://api.render.com/v1/services/SERVICE_ID/env-vars" \
   -X PUT -H "Authorization: Bearer $RENDER_API_KEY" \
@@ -150,21 +150,21 @@ curl -s "https://api.render.com/v1/services/SERVICE_ID/env-vars" \
 
 ### Phase 6: Deploy & Verify (VERIFY)
 
-1. **Trigga deploy**
+1. **Trigger deploy**
    ```bash
    curl -X POST "https://api.render.com/v1/services/ID/deploys" \
      -H "Authorization: Bearer $RENDER_API_KEY"
    ```
 
-2. **Verifiera**
-   - [ ] Render build lyckades
-   - [ ] Frontend laddar
-   - [ ] Backend health endpoint svarar
-   - [ ] Databas-anslutning fungerar
+2. **Verify**
+   - [ ] Render build succeeded
+   - [ ] Frontend loads
+   - [ ] Backend health endpoint responds
+   - [ ] Database connection works
 
 ## Output
 
-När deployment är klar, rapportera:
+When deployment is complete, report:
 
 ```markdown
 ## Deployment Complete
@@ -175,5 +175,5 @@ När deployment är klar, rapportera:
 | Backend | https://project-api.onrender.com |
 | Supabase | https://xxx.supabase.co |
 
-**Credentials:** Sparade i `/path/to/project/.env`
+**Credentials:** Saved in `/path/to/project/.env`
 ```

@@ -13,97 +13,97 @@ allowed-tools:
 
 # Skill Improvement
 
-Analyserar lärdomar och föreslår permanenta förbättringar till skills/agents.
+Analyzes learnings and proposes permanent improvements to skills/agents.
 
 ## When to Use
 
-- När LEARNINGS.md har 3+ lärdomar i samma kategori
-- Efter större projekt för att konsolidera lärdomar
-- När `retrospective` flaggar ett mönster
+- When LEARNINGS.md has 3+ learnings in the same category
+- After major projects to consolidate learnings
+- When `retrospective` flags a pattern
 
 ## Process
 
 ### 1. Analyze Learnings
 
 ```bash
-# Läs LEARNINGS.md
-# Gruppera efter kategori
-# Identifiera mönster (3+ liknande problem)
+# Read LEARNINGS.md
+# Group by category
+# Identify patterns (3+ similar problems)
 ```
 
 ### 2. Find Target File
 
-| Kategori | Fil att uppdatera |
-|----------|-------------------|
+| Category | File to update |
+|----------|----------------|
 | `supabase-setup` | `.claude/skills/supabase-setup/SKILL.md` |
 | `deployment-workflow` | `.claude/skills/deployment-workflow/SKILL.md` |
 | `tech-project-lead` | `.claude/agents/tech-project-lead.md` |
 | `frontend-planning` | `.claude/skills/frontend-planning/SKILL.md` |
-| etc. | `.claude/skills/[kategori]/SKILL.md` |
+| etc. | `.claude/skills/[category]/SKILL.md` |
 
 ### 3. Propose Change
 
-Presentera för användaren:
+Present to the user:
 
 ```markdown
 ## Proposed Improvement
 
-**Pattern identified:** [Vad vi sett upprepas]
+**Pattern identified:** [What we've seen repeat]
 
 **Learnings involved:**
-- [Lärdom 1]
-- [Lärdom 2]
-- [Lärdom 3]
+- [Learning 1]
+- [Learning 2]
+- [Learning 3]
 
-**Proposed change to:** `[fil]`
+**Proposed change to:** `[file]`
 
 **Current:**
-[Relevant sektion som finns idag]
+[Relevant section as it exists today]
 
 **Proposed:**
-[Hur det bör se ut efter ändring]
+[How it should look after the change]
 
 **Rationale:**
-[Varför detta förbättrar systemet]
+[Why this improves the system]
 ```
 
-### 4. Implement (efter godkännande)
+### 4. Implement (after approval)
 
-1. Uppdatera skill/agent-filen
-2. Flytta lärdomar till "Archived" i LEARNINGS.md
-3. Lägg till referens till vilken fil som uppdaterades
+1. Update the skill/agent file
+2. Move learnings to "Archived" in LEARNINGS.md
+3. Add reference to which file was updated
 
 ### 5. Verify
 
-- Läs uppdaterad fil
-- Bekräfta att ändringen är korrekt
-- Rapportera till användaren
+- Read the updated file
+- Confirm the change is correct
+- Report to the user
 
 ## Output
 
 ```markdown
 ## Improvement Complete
 
-**Updated:** `[fil]`
+**Updated:** `[file]`
 
-**Change:** [Kort beskrivning]
+**Change:** [Short description]
 
-**Archived learnings:** [antal] learnings moved to archive
+**Archived learnings:** [count] learnings moved to archive
 
-**LEARNINGS.md status:** [antal] active learnings remaining
+**LEARNINGS.md status:** [count] active learnings remaining
 ```
 
 ## Rules
 
-1. **Aldrig ändra utan godkännande** - föreslå, vänta på OK
-2. **Minimal ändring** - lägg till, refaktorera inte hela filen
-3. **Bevara arkiv** - flytta, radera inte lärdomar
-4. **En ändring i taget** - inte flera filer samtidigt
+1. **Never change without approval** - propose, wait for OK
+2. **Minimal change** - add to, don't refactor the entire file
+3. **Preserve archive** - move, don't delete learnings
+4. **One change at a time** - not multiple files simultaneously
 
 ## Pattern Thresholds
 
-| Antal lärdomar | Åtgärd |
+| Learning count | Action |
 |----------------|--------|
-| 1-2 | Behåll i LEARNINGS.md, inget mönster än |
-| 3+ | Föreslå permanent förbättring |
-| 5+ | Prioritera denna förbättring |
+| 1-2 | Keep in LEARNINGS.md, no pattern yet |
+| 3+ | Propose permanent improvement |
+| 5+ | Prioritize this improvement |

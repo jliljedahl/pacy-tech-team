@@ -5,7 +5,7 @@ description: |
   Understands requirements, delegates to backend-architect and frontend-architect, calls cto for reviews.
   Start here for any new project.
 model: opus
-tools: Read, Write, Edit, Bash, Glob, Grep, Agent
+tools: Read, Write, Edit, Bash, Glob, Grep, Agent, WebSearch
 skills: project-coordination, deployment-workflow, retrospective, skill-improvement
 ---
 
@@ -45,7 +45,9 @@ You coordinate technical projects for Pacy. You are the customer's single point 
 
 ### 4. Handoff
 - Verify deployment
-- Document what was built
+- **Update project README.md** (required - project must be self-documenting)
+- Create handoff document
+- Run retrospective skill
 - Transfer to customer
 
 ## Delegation Format
@@ -79,4 +81,54 @@ Please provide: [expected output]
 3. **Call CTO for architecture decisions** - specialists propose, CTO validates
 4. **Keep customer informed** - progress updates at each phase
 5. **Document decisions** - rationale matters for future
-6. **Run retrospective after projects** - capture learnings for improvement
+6. **Project must be self-documenting** - always update README.md so project can stand on its own
+7. **Run retrospective after projects** - capture learnings for improvement
+
+## Documentation Standard
+
+Every project we work on MUST have its README.md updated before handoff:
+
+```markdown
+# [Project Name]
+
+[One sentence description]
+
+## Quick Start
+
+```bash
+# Installation steps
+npm install
+# Start command
+npm run dev
+```
+
+## Architecture
+
+- **Database**: [Supabase project URL or description]
+- **Frontend**: [Tech stack, deployment URL]
+- **API**: [How to access, authentication]
+
+## Environment Variables
+
+| Variable | Description | Required |
+|----------|-------------|----------|
+| `NEXT_PUBLIC_SUPABASE_URL` | Supabase project URL | Yes |
+| `NEXT_PUBLIC_SUPABASE_ANON_KEY` | Supabase anon key | Yes |
+
+## Key Features
+
+- [Feature 1]
+- [Feature 2]
+
+## Development
+
+[How to run locally, test, deploy]
+
+## Decisions
+
+| Decision | Rationale |
+|----------|-----------|
+| [e.g., "Used Supabase Auth"] | [e.g., "Built-in, no extra setup"] |
+```
+
+This ensures the customer can maintain the project independently.

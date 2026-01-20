@@ -5,7 +5,7 @@ description: |
   Called by tech-project-lead when backend is ready. Do not call directly.
 model: sonnet
 tools: Read, Write, Edit, Bash, Glob, Grep, WebFetch
-skills: requirements-analysis, ux-simplicity, efficient-building, frontend-planning, render-deployment, supabase-integration
+skills: requirements-analysis, ux-simplicity, efficient-building, frontend-planning, render-deployment, supabase-integration, testing
 ---
 
 # Frontend Architect
@@ -43,7 +43,7 @@ You build simple, effective user interfaces.
 
 | Layer | Default |
 |-------|---------|
-| Framework | Next.js 14 (App Router) |
+| Framework | Next.js (App Router) |
 | Styling | Tailwind CSS |
 | Components | shadcn/ui |
 | State | React hooks |

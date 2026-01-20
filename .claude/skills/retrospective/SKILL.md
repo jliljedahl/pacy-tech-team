@@ -11,78 +11,78 @@ allowed-tools:
 
 # Retrospective
 
-Fångar lärdomar efter projekt för kontinuerlig förbättring.
+Captures learnings after projects for continuous improvement.
 
 ## When to Use
 
-- Efter avslutat projekt
-- Efter en svår debugging-session
-- När något tog längre tid än förväntat
-- När vi hittade en bättre lösning än planerat
+- After completing a project
+- After a difficult debugging session
+- When something took longer than expected
+- When we found a better solution than planned
 
 ## Process
 
-### 1. Gather (Fråga användaren)
+### 1. Gather (Ask the user)
 
 ```
-Tre frågor:
+Three questions:
 
-1. Vad gick bra som vi bör fortsätta med?
-2. Vad var svårt eller tog längre tid än förväntat?
-3. Vad skulle vi göra annorlunda nästa gång?
+1. What went well that we should continue doing?
+2. What was difficult or took longer than expected?
+3. What would we do differently next time?
 ```
 
 ### 2. Categorize
 
-Koppla varje lärdom till relevant skill eller agent:
+Map each learning to the relevant skill or agent:
 
-| Lärdom handlar om | Kategori |
-|-------------------|----------|
-| Supabase-setup | `supabase-setup` |
-| Frontend-struktur | `frontend-planning` |
-| Deployment-problem | `deployment-workflow` |
-| Projektkoordinering | `project-coordination` |
-| Agent-kommunikation | `tech-project-lead` |
+| Learning relates to | Category |
+|---------------------|----------|
+| Supabase setup | `supabase-setup` |
+| Frontend structure | `frontend-planning` |
+| Deployment issues | `deployment-workflow` |
+| Project coordination | `project-coordination` |
+| Agent communication | `tech-project-lead` |
 
 ### 3. Document
 
-Skriv till `.claude/LEARNINGS.md`:
+Write to `.claude/LEARNINGS.md`:
 
 ```markdown
-### [YYYY-MM-DD] Kort beskrivande titel
+### [YYYY-MM-DD] Short descriptive title
 
-**Kontext:** Vad vi gjorde
-**Problem:** Vad som var svårt
-**Lösning:** Hur vi löste det / vad vi lärde oss
-**Kategori:** skill-namn eller agent-namn
+**Context:** What we were doing
+**Problem:** What was difficult
+**Solution:** How we solved it / what we learned
+**Category:** skill-name or agent-name
 ```
 
 ### 4. Check for Patterns
 
-Om LEARNINGS.md har 3+ lärdomar i samma kategori:
+If LEARNINGS.md has 3+ learnings in the same category:
 
-> "Jag ser ett mönster - flera lärdomar relaterar till [kategori].
-> Vill du köra `skill-improvement` för att föreslå permanenta förbättringar?"
+> "I see a pattern - multiple learnings relate to [category].
+> Do you want to run `skill-improvement` to suggest permanent improvements?"
 
 ## Output
 
 ```markdown
-## Retrospective: [Projekt/Session]
+## Retrospective: [Project/Session]
 
 ### Captured Learnings
-- [Lärdom 1] → kategori
-- [Lärdom 2] → kategori
+- [Learning 1] → category
+- [Learning 2] → category
 
 ### Pattern Alert
-[Om mönster upptäckts]
+[If pattern detected]
 
 ### Next Step
-[Förslag på vad som bör göras]
+[Suggestion for what should be done]
 ```
 
 ## Rules
 
-1. **Alltid fråga användaren** - gissa inte lärdomar
-2. **Var specifik** - "RLS-policies var svåra" inte "backend var svårt"
-3. **Kategorisera korrekt** - viktig för att hitta mönster
-4. **Håll kort** - en lärdom = ett problem + en lösning
+1. **Always ask the user** - don't guess learnings
+2. **Be specific** - "RLS policies were difficult" not "backend was hard"
+3. **Categorize correctly** - important for finding patterns
+4. **Keep it short** - one learning = one problem + one solution

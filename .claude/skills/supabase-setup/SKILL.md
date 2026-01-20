@@ -16,14 +16,14 @@ allowed-tools:
 ## CLI Available
 
 Supabase CLI: `~/bin/supabase` (authenticated)
-Organization ID: `olshfmcoszcgfwznrxgs`
+Organization ID: `$SUPABASE_ORG_ID` (from .env)
 
 ### Full Workflow: New Project
 
 ```bash
 # 1. Create project
 ~/bin/supabase projects create "Project Name" \
-  --org-id olshfmcoszcgfwznrxgs \
+  --org-id $SUPABASE_ORG_ID \
   --region eu-central-1 \
   --db-password "GENERATE_SECURE_PASSWORD"
 
