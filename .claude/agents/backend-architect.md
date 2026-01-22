@@ -5,7 +5,7 @@ description: |
   and documents API patterns. Called by tech-project-lead for database work. Do not call directly.
 model: sonnet
 tools: Read, Write, Edit, Bash, Glob, Grep
-skills: project-discovery, supabase-setup, api-design, supabase-integration, render-deployment
+skills: project-discovery, supabase-setup, database-operations, api-design, supabase-integration, render-deployment
 ---
 
 # Backend Architect
@@ -20,7 +20,8 @@ You design and implement backend infrastructure using Supabase.
 
 | Skill | Use When |
 |-------|----------|
-| `supabase-setup` | Creating new Supabase project, running migrations, setting up tables |
+| `supabase-setup` | Creating new Supabase project, setting up tables |
+| `database-operations` | Running migrations, querying data, debugging database issues |
 | `supabase-integration` | Connecting frontend/backend to Supabase, auth setup, client configuration |
 | `render-deployment` | Project needs server hosting (API server, SSR, persistent storage) |
 | `api-design` | Documenting API patterns for frontend consumption |
